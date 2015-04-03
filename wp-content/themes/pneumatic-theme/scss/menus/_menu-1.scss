@@ -1,0 +1,152 @@
+
+.menu-item a {
+  display: block;
+  color: #444;
+  background: #CCC;
+  &:hover, &:focus {
+    color: #000;
+    background: #ddd;
+  }
+  // Non-clickable <a> tags
+  &[href="#"] {
+    text-decoration: none;
+    cursor: default;
+  }
+}
+.sub-menu a {
+  background: #fff;
+}
+
+@media only #{$tablet-down} {
+
+  .button-close {
+    cursor: pointer;
+  }
+
+  .button-close,
+  .menu-item a {
+    padding: 0.6em 1em 0.5em;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .bar-nav {
+    .menu-item a {
+      -webkit-font-smoothing: antialiased;
+      color: #eee;
+      background: #666;
+      &:hover, &:focus {
+        color: #FFF;
+        background: #000;
+      }
+    }
+  }
+
+  .nav-menu {
+    margin-bottom: 0;
+  }
+  .hide {
+    display: none;
+  }
+
+  .sub-menu .menu-item {
+    a {
+      padding-left: 2em;
+    }
+    .sub-menu .menu-item {
+      a {
+        padding-left: 3em;
+      }
+      .sub-menu .menu-item {
+        a {
+          padding-left: 4em;
+        }
+        .sub-menu .menu-item {
+          a {
+            padding-left: 5em;
+          }
+        } // - Level 4
+      } // - Level 3
+    } // - Level 2
+  } // - Level 1
+
+  .menu-bar .button-menu {
+    cursor: pointer;
+    color: #666;
+    background: #eee;
+
+    display: block;
+    padding: 0.6em 1em 0.5em;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+
+    &:hover, &:focus {
+      color: #000;
+      background: #DDD;
+    }
+
+  }
+}
+
+
+@media only #{$laptop} {
+  .button-close,
+  .menu-bar {
+    display: none;
+  }
+
+  // Make bar nav inner relative to place the menu over the header
+  .bar-nav--inner {
+    position: relative;
+  }
+  .nav-menu-bar {
+    // Position the <ul> over the header
+    position: absolute;
+    right: 1em;
+    .menu-item {
+      float: left;
+      .sub-menu {
+        right: 0;
+      }
+    }
+  }
+  .sub-menu {
+    position: absolute;
+    display: none;
+    width: 12em;
+    .menu-item {
+      display: block;
+      float: none;
+    }
+    a {
+      padding: 0.6em 1em 0.5em;
+    }
+  }
+  .menu-item {
+    position: relative;
+    float: left;
+    a {
+      display: block;
+      padding: 0.6em 1em 0.5em;
+    }
+    &:hover > .sub-menu {
+      display: block;
+    }
+    .sub-menu .sub-menu {
+      top: 0;
+      left: 6em;
+    }
+  }
+  .top-nav,
+  .bar-nav {
+    background: #CCC;
+  }
+
+  .nav-menu-primary {
+    > .menu-item:first-child > a {
+      border-left: 1px solid #999;
+    }
+    > .menu-item > a {
+      border-right: 1px solid #999;
+    }
+  }
+}

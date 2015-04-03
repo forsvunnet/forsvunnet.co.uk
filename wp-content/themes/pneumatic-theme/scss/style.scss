@@ -1,0 +1,27 @@
+/******************************************************************
+Pneumatic theme styles
+******************************************************************/
+
+$landscape:        'screen and ( min-width:  481px )';
+$mobile-only:      'screen and ( max-width:  767px )';
+$tablet:           'screen and ( min-width:  768px )';
+$tablet-landscape: 'screen and ( min-width: 1024px )';
+$tablet-down:      'screen and ( max-width: 1024px )';
+$laptop:           'screen and ( min-width: 1025px )';
+$desktop:          'screen and ( min-width: 1240px )';
+
+// Normalize: http://necolas.github.io/normalize.css/
+@import "partials/normalize";
+// Layout / grid
+@import "partials/layout";
+// Base styles
+@import "breakpoints/base";
+// Use menu-1 (default)
+@import "menus/menu-1";
+
+// Import breakpoints
+@media only #{$mobile-only}      { @import "breakpoints/mobile-only"; }
+@media only #{$landscape}        { @import "breakpoints/landscape"; }
+@media only #{$tablet}           { @import "breakpoints/tablet"; }
+@media only #{$tablet-landscape} { @import "breakpoints/tablet-landscape"; }
+@media only #{$desktop}          { @import "breakpoints/desktop"; }
