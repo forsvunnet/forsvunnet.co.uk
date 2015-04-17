@@ -7,6 +7,11 @@
   box-sizing:         border-box;
 }
 
+// Basic text settings:
+body {
+  line-height: 125%;
+}
+
 // Contain floats: nicolasgallagher.com/micro-clearfix-hack/
 .clearfix, .cf {
   zoom: 1;
@@ -102,6 +107,21 @@ dd {
   margin-left: 1.5em;
 }
 
+// Pre
+pre {
+  font-size: (12/16)+em;
+  word-wrap: normal;
+  &.hljs, & {
+    padding: 5px 10px 6px 10px;
+    padding: (5/16)+rem (10/16)+rem (6/16)+rem (10/16)+rem;
+  }
+  code {
+    overflow: auto;
+    display: block;
+  }
+}
+
+// Tables
 tr{
   &.odd {
   }
@@ -202,26 +222,49 @@ span.amp {
  * Articles / Items
  */
 
+
 .article {
   border-bottom: 1px solid #999;
   &:nth-of-type(2n) {
     background-color: #eee;
   }
-
 }
 
-
+/**
+ * Unloading the document
+ */
+@-webkit-keyframes unload-clicked {
+  0% {right: 100%;}
+  100% {right: 0%;}
+}
+@keyframes unload-clicked {
+  0% {right: 100%;}
+  100% {right: 0%;}
+}
 .unloading {
   cursor: wait !important;
   a {
     cursor: wait !important;
   }
-}
-.veil {
-  position: fixed;
-  top: 0; bottom: 0;
-  right: 0; left: 0;
-  background-color: rgba(255,255,255,0.5);
+
+  .clicked {
+    position: relative;
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      height: 100%;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      background-color: rgba(255,255,255,0.5);
+      animation-name: unload-clicked;
+      -webkit-animation-name: unload-clicked;
+      animation-duration: 0.2s;
+      -webkit-animation-duration: 0.2s;
+    }
+  }
 }
 
 // Header
@@ -290,8 +333,13 @@ span.amp {
   width: 50%;
   padding: 1em;
 }
+.widget_search,
 .widget_calendar {
   width: 100%;
+}
+#wp-calendar {
+  margin-right: auto;
+  margin-left: auto;
 }
 
 
@@ -311,4 +359,4 @@ span.amp {
     background-color: lighten(#369, 10%);
     text-decoration: underline;
   }
- }
+}

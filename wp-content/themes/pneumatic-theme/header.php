@@ -14,7 +14,6 @@
 </head>
 
 <body <?php body_class(); ?>>
-<div class="veil"></div>
 <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'pneumatic-theme' ); ?></a>
 
 <div class="container">
@@ -62,14 +61,15 @@
   <?php require_once "includes/menu-script.php"; ?>
   <script type="text/javascript">
   ( function( $ ) {
-    // var veil = $( '<div>' ).addClass( 'veil' );
-    // $('body').prepend( veil );
-    var veil = $( '.veil' );
-    veil.fadeOut( 500 );
+    // Expose the "clicked" handler to scripts in the footer
+    window.clicked_handler = function() {
+      $( '.clicked' ).removeClass( 'clicked' );
+      $( this ).addClass( 'clicked' );
+    };
     $(window).on( 'beforeunload', function() {
       $('body').addClass( 'unloading' );
-      veil.fadeIn( 200 );
     } );
+    $( '.nav-menu a' ).click( window.clicked_handler );
   } ( jQuery ) );
   </script>
 
